@@ -160,7 +160,7 @@ export default async function UserProfilePage({ params }: Props) {
   const canViewShows = !isPrivate || user.watchHistoryVisibility === 'everyone';
 
   let followedShows: FollowedShow[] = [];
-  let userStats = { totalEpisodesWatched: 0 };
+  let userStats: { totalEpisodesWatched?: number } = {};
 
   if (canViewShows) {
     followedShows = await getUserShows(userId);
