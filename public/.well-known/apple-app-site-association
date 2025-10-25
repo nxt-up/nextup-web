@@ -1,0 +1,20 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "2DS67Q47ES.app.nextup",
+        "paths": [
+          "/show/*",
+          "/show/*/season/*/episode/*",
+          "/user/*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "2DS67Q47ES.app.nextup"
+    ]
+  }
+}
