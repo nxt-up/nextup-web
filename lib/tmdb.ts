@@ -253,22 +253,20 @@ export async function getSeasonDetails(
   });
 
   // Convert episodes from snake_case to camelCase
-  const episodes: TMDBEpisode[] = rawData.episodes.map(
-    (rawEp: Record<string, unknown>) => ({
-      ...rawEp,
-      stillPath: (rawEp.still_path as string) || (rawEp.stillPath as string),
-      seasonNumber:
-        (rawEp.season_number as number) || (rawEp.seasonNumber as number),
+  const episodes: TMDBEpisode[] = rawData.episodes.map(rawEp => {
+    const ep = rawEp as unknown as Record<string, unknown>;
+    return {
+      ...(rawEp as TMDBEpisode),
+      stillPath: (ep.still_path as string) || (ep.stillPath as string),
+      seasonNumber: (ep.season_number as number) || (ep.seasonNumber as number),
       episodeNumber:
-        (rawEp.episode_number as number) || (rawEp.episodeNumber as number),
-      airDate: (rawEp.air_date as string) || (rawEp.airDate as string),
-      voteAverage:
-        (rawEp.vote_average as number) || (rawEp.voteAverage as number),
-      voteCount: (rawEp.vote_count as number) || (rawEp.voteCount as number),
-      episodeType:
-        (rawEp.episode_type as string) || (rawEp.episodeType as string),
-    })
-  );
+        (ep.episode_number as number) || (ep.episodeNumber as number),
+      airDate: (ep.air_date as string) || (ep.airDate as string),
+      voteAverage: (ep.vote_average as number) || (ep.voteAverage as number),
+      voteCount: (ep.vote_count as number) || (ep.voteCount as number),
+      episodeType: (ep.episode_type as string) || (ep.episodeType as string),
+    };
+  });
 
   return { episodes };
 }
