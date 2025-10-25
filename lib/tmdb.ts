@@ -93,7 +93,7 @@ export async function getShowDetails(showId: string): Promise<TMDBShow> {
     });
 
     // Convert snake_case to camelCase for consistency
-    const rawData = rawShow as Record<string, unknown>;
+    const rawData = rawShow as unknown as Record<string, unknown>;
     const show: TMDBShow = {
       ...rawShow,
       posterPath: (rawData.poster_path as string) || rawShow.posterPath,
@@ -204,7 +204,7 @@ export async function getEpisodeDetails(
   });
 
   // Convert snake_case to camelCase for consistency
-  const rawData = rawEpisode as Record<string, unknown>;
+  const rawData = rawEpisode as unknown as Record<string, unknown>;
   const episode: TMDBEpisode = {
     ...rawEpisode,
     stillPath: (rawData.still_path as string) || rawEpisode.stillPath,
